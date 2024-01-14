@@ -11,6 +11,7 @@ export interface User {
 	first_name: string | null;
 	last_name: string | null;
 	email: string | null;
+	phone_number: string | null;
 	password: string | null;
 	status: 'active' | 'suspended' | 'invited';
 	role: string | null;

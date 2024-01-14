@@ -19,6 +19,12 @@ fields:
       iconRight: email
     width: half
 
+  - field: phone_number
+    interface: input
+    options:
+      iconRight: phone
+    width: half
+
   - field: password
     special:
       - hash

@@ -8,6 +8,7 @@ import {
 	createOAuth2AuthRouter,
 	createOpenIDAuthRouter,
 	createSAMLAuthRouter,
+	createSMSOTPAuthRouter,
 } from '../auth/drivers/index.js';
 import { COOKIE_OPTIONS, DEFAULT_AUTH_PROVIDER } from '../constants.js';
 import { useLogger } from '../logger.js';
@@ -46,6 +47,10 @@ for (const authProvider of authProviders) {
 
 		case 'saml':
 			authRouter = createSAMLAuthRouter(authProvider.name);
+			break;
+
+		case 'smsotp':
+			authRouter = createSMSOTPAuthRouter(authProvider.name);
 			break;
 	}
 

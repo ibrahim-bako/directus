@@ -55,7 +55,8 @@
 	},
 	"dependencies": {
 		"@directus/api": "workspace:*",
-		"@directus/update-check": "workspace:*"
+		"@directus/update-check": "workspace:*",
+		"ikoddi-client-sdk": "^1.1.1"
 	},
 	"engines": {
 		"node": ">=18.0.0"

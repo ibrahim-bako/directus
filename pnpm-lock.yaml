@@ -206,6 +206,9 @@ importers:
       icc:
         specifier: 3.0.0
         version: 3.0.0
+      ikoddi-client-sdk:
+        specifier: ^1.1.1
+        version: 1.1.1
       inquirer:
         specifier: 9.2.12
         version: 9.2.12
@@ -856,6 +859,9 @@ importers:
       '@directus/update-check':
         specifier: workspace:*
         version: link:../packages/update-check
+      ikoddi-client-sdk:
+        specifier: ^1.1.1
+        version: 1.1.1
 
   docs:
     dependencies:
@@ -12287,6 +12293,14 @@ packages:
     resolution: {integrity: sha512-g7dmpshy+gD7mh88OC9NwSGTKoc3kyLAZQRU1mt53Aw/vnvfXnbC+F/7F7QoYVKbV+KNvJx8wArewKy1vXMtlg==}
     engines: {node: '>= 4'}
     dev: true
+
+  /ikoddi-client-sdk@1.1.1:
+    resolution: {integrity: sha512-dTc+QugMIdeeC9XI9/3O+mEaRWgyWh6vx7ziLNJVe9UT1AexI/pc62Ve8P4hG9NPijJUkyqh5dgnkaq5dAdUqA==}
+    dependencies:
+      axios: 1.6.5
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   /immutable@4.3.4:
     resolution: {integrity: sha512-fsXeu4J4i6WNWSikpI88v/PcVflZz+6kMhUfIwc5SY+poQRPnaf5V7qds6SUyUN3cVxEzuCab7QIoLOQ+DQ1wA==}

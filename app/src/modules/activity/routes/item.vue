@@ -12,6 +12,7 @@ type ActivityRecord = {
 	user: {
 		id: string;
 		email: string;
+		phone_number: string;
 		first_name: string;
 		last_name: string;
 	} | null;
@@ -56,6 +57,7 @@ async function loadActivity() {
 				fields: [
 					'user.id',
 					'user.email',
+					'user.phone_number',
 					'user.first_name',
 					'user.last_name',
 					'action',
