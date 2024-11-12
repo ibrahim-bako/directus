@@ -5,7 +5,7 @@ import { useCollectionPermissions } from '@/composables/use-permissions';
 import { router } from '@/router';
 import { useFlowsStore } from '@/stores/flows';
 import { unexpectedError } from '@/utils/unexpected-error';
-import { FlowRaw } from '@directus/types';
+import { Flow, FlowRaw } from '@directus/types';
 import { sortBy } from 'lodash';
 import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -70,6 +70,14 @@ const tableHeaders = ref<Header[]>([
 		align: 'left',
 		description: null,
 	},
+	{
+		text: t('accountability'),
+		value: 'accountability',
+		width: 180,
+		sortable: true,
+		align: 'left',
+		description: null,
+	},
 ]);
 
 const internalSort = ref<Sort>({ by: 'name', desc: false });
@@ -83,6 +91,27 @@ const flows = computed(() => {
 
 function updateSort(sort: Sort | null) {
 	internalSort.value = sort ?? { by: 'name', desc: false };
+}
+
+function getAccountabilityTranslatedValue(accountability: Flow['accountability']): string {
+	switch (accountability) {
+		case 'all':
+			return t('flow_tracking_all');
+		case 'activity':
+			return t('flow_tracking_activity');
+		case null:
+			return t('flow_tracking_null');
+	}
+}
+
+function getAccountabilityIsDisablesState(accountability: Flow['accountability']): boolean {
+	switch (accountability) {
+		case 'all':
+		case 'activity':
+			return false;
+		case null:
+			return true;
+	}
 }
 
 function navigateToFlow({ item: flow }: { item: FlowRaw }) {
@@ -189,6 +218,10 @@ function onFlowDrawerCompletion(id: string) {
 					:value="item.status"
 					:conditional-formatting="conditionalFormatting"
 				/>
+			</template>
+
+			<template #[`item.accountability`]="{ item }">
+				<v-chip small :disabled="getAccountabilityIsDisablesState(item.accountability)">{{ getAccountabilityTranslatedValue(item.accountability) }}</v-chip>
 			</template>
 
 			<template #item-append="{ item }">
